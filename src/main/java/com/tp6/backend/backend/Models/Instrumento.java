@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,11 @@ import lombok.Setter;
 public class Instrumento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter(value = AccessLevel.PUBLIC)
     private Long id;
+
     private String instrumento,
-    marca,
+    marca, 
     modelo,
     imagen,
     precio,
@@ -29,4 +32,13 @@ public class Instrumento {
     private Long cantidadVendida;
     @Column(columnDefinition = "TEXT")
     private String descripcion;
+
+    public String getId(){
+        return String.valueOf(id);
+    }
+
+    public void setId(String id){
+        this.id = Long.parseLong(id);
+    }
+
 }
